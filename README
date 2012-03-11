@@ -1,0 +1,25 @@
+This plugin works best with zend framework 1.11 and was developed by artodeto (artodeto.bazzline.net).
+
+To get things started, create a directory called "Bazzline" in your library directory and copy the files into it.
+Also create a file called "bazzline.ini" in your application/configs directory and include the following lines of code.
+<code>
+; url where to redirect the not logged in user
+plugin.auth.loginUrl = '/user/index/login'
+; save the called url before redirect to the login url?
+plugin.auth.saveUrlBeforeRedirect = 1
+; an array with urls that not logged in users can see
+plugin.auth.noAuthRequired.0 = '/user/index/login'
+plugin.auth.noAuthRequired.1 = '/user/index/logout'
+</code>
+
+You have to edit your application.ini with the following lines of code.
+<code>
+; add namespace to autoloader
+Autoloadernamespaces[] = "Bazzline_"
+; enable plugin
+resources.frontController.plugins.Auth = "Bazzline_Controller_Plugin_Auth"
+</code>
+
+You have to adapt the action "logIn" in Auth.php and change "Application_Model_User" and "$user->getIsActive" to your wished way.
+
+Thats it, have fun.
